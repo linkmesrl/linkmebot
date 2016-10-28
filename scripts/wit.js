@@ -1,60 +1,67 @@
-const GoogleSpreadsheet = require('google-spreadsheet')
 const P = require('bluebird')
-const doc = P.promisifyAll(new GoogleSpreadsheet('1c6daQgMOkKuqj1D5ldrvPC6xQQm3qbRKHd_PCzR6tvA'))
+const GoogleSpreadsheet = P.promisifyAll(require('./spreadsheet'))
 const CONFIDENCE_THRESHOLD = 0.75
 const path = require('path')
 
-const init = P.coroutine(function*(robot) {
+let answers = null
+
+const refreshAnswers = () =>
+GoogleSpreadsheet
+.getAnswersAsync()
+.then(answers =>
+  answers.reduce((acc, item) => {
+    acc[item[0].trim()] = item[1]
+    return acc
+  }, {}
+  )
+)
+
+/**
+ * Main bot init
+ */
+module.exports = P.coroutine(function*(robot) {
   if (!process.env.HUBOT_WIT_TOKEN) {
     console.log('No wit token')
     return
   }
-
   // init gdrive "backend"
-  const auth = require(path.join(__dirname, '../faqbot-c4d68c18dfbb.json'))
-  console.log(auth)
-  yield doc.useServiceAccountAuthAsync(require(path.join(__dirname, '../faqbot-c4d68c18dfbb.json')))
-  const info = yield doc.getInfoAsync()
-  const sheet = P.promisifyAll(info.worksheets[0])
+  yield GoogleSpreadsheet.initAsync(
+    path.join(__dirname, '../client-secret.json')
+  )
+  answers = yield refreshAnswers()
 
-  robot.hear(/minchi|cazz|puttan|troia|figa|merd|suca/i, (res) => {
-    res.send('vacci piano fratello')
+  robot.respond(/(.*)/, P.coroutine(function* (msg) {
+    const query = msg.match[1]
+    try {
+      const intent = yield getIntent(query, robot).catch(err => { msg.reply(err); throw err })
+      const res = answers[intent]
+      if (!res) { return msg.reply(`non so nulla dell'argomento ` + intent) }
+      msg.reply(res)
+    } catch (e) { console.log(e) }
   })
-
-  robot.respond(/(.*)/, getFaq(robot, sheet))
+  )
 })
 
-const getFaq = (robot, sheet) => (msg) => {
-  if (!process.env.HUBOT_WIT_TOKEN) {
-    msg.reply('No wit token')
-    return
-  }
-
-  const query = msg.match[1]
-
+const getIntent = (query, robot) => new Promise((resolve, reject) => {
   robot.http(`https://api.wit.ai/message?v=${process.env.HUBOT_WIT_VERSION}&session_id=123&q=${encodeURI(query)}`)
   .header('Content-Type', 'application/json')
   .header('Authorization', 'Bearer ' + process.env.HUBOT_WIT_TOKEN)
   .header('Accept', 'application/vnd.wit.20141022+json')
-  .get()(askSpreadsheet(sheet, msg)) // this returned function is really annoying to promisify
-}
+  .get()((err, r, body) => {
+    if (err) reject(err)
 
-const askSpreadsheet = (sheet, msg) => P.coroutine(function*(err, r, body) {
-  if (err) { msg.reply(err) }
+    const res = JSON.parse(body)
 
-  const res = JSON.parse(body)
+    if (!res.entities.intent) {
+      return reject('Ah boh non lo so')
+    }
 
-  if (!res.entities.intent) {
-    return msg.reply('Ah boh non lo so')
-  }
+    const {confidence, value} = res.entities.intent[0]
 
-  const {confidence, value} = res.entities.intent[0]
+    if (confidence < CONFIDENCE_THRESHOLD) {
+      return reject(`Non sono sicuro di aver capito - ${JSON.stringify(res.entities.intent[0])}`)
+    }
 
-  if (confidence < CONFIDENCE_THRESHOLD) {
-    return msg.reply(`Non sono sicuro di aver capito - ${JSON.stringify(res.entities.intent[0])}`)
-  }
-
-  const sheetResult = yield sheet.getCells()
-  console.log(sheetResult)
+    return resolve(value)
+  }) // this returned function is really annoying to promisify
 })
-module.exports = init

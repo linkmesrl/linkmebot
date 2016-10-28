@@ -1,0 +1,76 @@
+[Fri Oct 28 2016 15:37:34 GMT+0200 (CEST)] INFO Logged in as babbot of LinkMe
+[Fri Oct 28 2016 15:37:34 GMT+0200 (CEST)] INFO Slack client now connected
+[Fri Oct 28 2016 15:37:35 GMT+0200 (CEST)] WARNING Expected /home/zio/code/babbot/scripts/prova to assign a function to module.exports, got object
+[Fri Oct 28 2016 15:37:35 GMT+0200 (CEST)] WARNING Expected /home/zio/code/babbot/scripts/spreadsheet to assign a function to module.exports, got object
+[Fri Oct 28 2016 15:37:35 GMT+0200 (CEST)] INFO /home/zio/code/babbot/scripts/wit.js is using deprecated documentation syntax
+[Fri Oct 28 2016 15:37:35 GMT+0200 (CEST)] WARNING Loading scripts from hubot-scripts.json is deprecated and will be removed in 3.0 (https://github.com/github/hubot-scripts/issues/1113) in favor of packages for each script.
+
+The following scripts have known replacements. Follow the link for installation instructions, then remove it from hubot-scripts.json:
+
+The following scripts don't have (known) replacements. You can try searching https://www.npmjs.com/ or http://github.com/search or your favorite search engine. You can copy the script into your local scripts directory, or consider creating a new package to maintain yourself. If you find a replacement or create a package yourself, please post on https://github.com/github/hubot-scripts/issues/1641:
+* wit
+
+You an also try updating hubot-scripts to get the latest list of replacements: npm install --save hubot-scripts@latest
+[Fri Oct 28 2016 15:37:35 GMT+0200 (CEST)] ERROR hubot-heroku-alive included, but missing HUBOT_HEROKU_KEEPALIVE_URL. `heroku config:set HUBOT_HEROKU_KEEPALIVE_URL=$(heroku apps:info -s  | grep web-url | cut -d= -f2)`
+[Fri Oct 28 2016 15:37:35 GMT+0200 (CEST)] INFO hubot-redis-brain: Using default redis on localhost:6379
+OAuth2Client {
+  transporter: DefaultTransporter {},
+  clientId_: '944767736444-2sqtto532d0p8u0d94s13taqt847fuls.apps.googleusercontent.com',
+  clientSecret_: 'B6q1IRpY_erEgM6RYCcqJBfT',
+  redirectUri_: 'urn:ietf:wg:oauth:2.0:oob',
+  opts: {},
+  credentials: 
+   { access_token: 'ya29.Ci-KA3f60YiFCDpooo6K9ualhhqOfRgF208EzICX0pMSG_lvjPi0mYOzH6NhsNPjHA',
+     refresh_token: '1/3erhVeHiqKHOWyH-59nvokgYADVoLXIQZoNkBRs9Z7Y',
+     token_type: 'Bearer',
+     expiry_date: 1477653490368 } }
+OAuth2Client {
+  transporter: DefaultTransporter {},
+  clientId_: '944767736444-2sqtto532d0p8u0d94s13taqt847fuls.apps.googleusercontent.com',
+  clientSecret_: 'B6q1IRpY_erEgM6RYCcqJBfT',
+  redirectUri_: 'urn:ietf:wg:oauth:2.0:oob',
+  opts: {},
+  credentials: 
+   { access_token: 'ya29.Ci-KA3f60YiFCDpooo6K9ualhhqOfRgF208EzICX0pMSG_lvjPi0mYOzH6NhsNPjHA',
+     refresh_token: '1/3erhVeHiqKHOWyH-59nvokgYADVoLXIQZoNkBRs9Z7Y',
+     token_type: 'Bearer',
+     expiry_date: 1477653490368 } }
+[Fri Oct 28 2016 15:37:35 GMT+0200 (CEST)] INFO hubot-redis-brain: Data for hubot brain retrieved from Redis
+[Fri Oct 28 2016 15:40:10 GMT+0200 (CEST)] INFO Logged in as babbot of LinkMe
+[Fri Oct 28 2016 15:40:10 GMT+0200 (CEST)] INFO Slack client now connected
+[Fri Oct 28 2016 15:40:10 GMT+0200 (CEST)] WARNING Expected /home/zio/code/babbot/scripts/prova to assign a function to module.exports, got object
+[Fri Oct 28 2016 15:40:10 GMT+0200 (CEST)] WARNING Expected /home/zio/code/babbot/scripts/spreadsheet to assign a function to module.exports, got object
+[Fri Oct 28 2016 15:40:10 GMT+0200 (CEST)] INFO /home/zio/code/babbot/scripts/wit.js is using deprecated documentation syntax
+[Fri Oct 28 2016 15:40:10 GMT+0200 (CEST)] WARNING Loading scripts from hubot-scripts.json is deprecated and will be removed in 3.0 (https://github.com/github/hubot-scripts/issues/1113) in favor of packages for each script.
+
+The following scripts have known replacements. Follow the link for installation instructions, then remove it from hubot-scripts.json:
+
+The following scripts don't have (known) replacements. You can try searching https://www.npmjs.com/ or http://github.com/search or your favorite search engine. You can copy the script into your local scripts directory, or consider creating a new package to maintain yourself. If you find a replacement or create a package yourself, please post on https://github.com/github/hubot-scripts/issues/1641:
+* wit
+
+You an also try updating hubot-scripts to get the latest list of replacements: npm install --save hubot-scripts@latest
+[Fri Oct 28 2016 15:40:10 GMT+0200 (CEST)] ERROR hubot-heroku-alive included, but missing HUBOT_HEROKU_KEEPALIVE_URL. `heroku config:set HUBOT_HEROKU_KEEPALIVE_URL=$(heroku apps:info -s  | grep web-url | cut -d= -f2)`
+[Fri Oct 28 2016 15:40:10 GMT+0200 (CEST)] INFO hubot-redis-brain: Using default redis on localhost:6379
+OAuth2Client {
+  transporter: DefaultTransporter {},
+  clientId_: '944767736444-2sqtto532d0p8u0d94s13taqt847fuls.apps.googleusercontent.com',
+  clientSecret_: 'B6q1IRpY_erEgM6RYCcqJBfT',
+  redirectUri_: 'urn:ietf:wg:oauth:2.0:oob',
+  opts: {},
+  credentials: 
+   { access_token: 'ya29.Ci-KA3f60YiFCDpooo6K9ualhhqOfRgF208EzICX0pMSG_lvjPi0mYOzH6NhsNPjHA',
+     refresh_token: '1/3erhVeHiqKHOWyH-59nvokgYADVoLXIQZoNkBRs9Z7Y',
+     token_type: 'Bearer',
+     expiry_date: 1477653490368 } }
+OAuth2Client {
+  transporter: DefaultTransporter {},
+  clientId_: '944767736444-2sqtto532d0p8u0d94s13taqt847fuls.apps.googleusercontent.com',
+  clientSecret_: 'B6q1IRpY_erEgM6RYCcqJBfT',
+  redirectUri_: 'urn:ietf:wg:oauth:2.0:oob',
+  opts: {},
+  credentials: 
+   { access_token: 'ya29.Ci-KA3f60YiFCDpooo6K9ualhhqOfRgF208EzICX0pMSG_lvjPi0mYOzH6NhsNPjHA',
+     refresh_token: '1/3erhVeHiqKHOWyH-59nvokgYADVoLXIQZoNkBRs9Z7Y',
+     token_type: 'Bearer',
+     expiry_date: 1477653490368 } }
+[Fri Oct 28 2016 15:40:10 GMT+0200 (CEST)] INFO hubot-redis-brain: Data for hubot brain retrieved from Redis
