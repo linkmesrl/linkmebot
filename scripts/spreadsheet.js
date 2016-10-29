@@ -18,16 +18,16 @@ let oauth2Client = null
 module.exports.init = (path, cb) => {
   fs.readFile(path, 'utf-8', function processClientSecrets (err, content) {
     if (err) {
+      console.log(err)
       console.log('Error loading client secret file: ' + err)
       return
     }
 
-    // Authorize a client with the loaded credentials, then call the
+    // Authorize a client with t/he loaded credentials, then call the
     // Google Sheets API.
     authorize(JSON.parse(content), (err, client) => {
       if (err) { return cb(err) }
       oauth2Client = client
-      console.log(client)
       cb(null, client)
     })
   })
@@ -120,10 +120,9 @@ module.exports.getAnswers = function (cb) {
     range: 'FAQ!A1:E'
   }, function (err, response) {
     if (err) {
-      cb(err)
+      return cb(err)
     }
 
-    console.log(response.values)
-
+    return cb(null, response.values)
   })
 }

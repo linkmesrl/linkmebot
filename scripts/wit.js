@@ -8,13 +8,13 @@ let answers = null
 const refreshAnswers = () =>
 GoogleSpreadsheet
 .getAnswersAsync()
-.then(answers =>
-  answers.reduce((acc, item) => {
+.then(answers => {
+  return answers.reduce((acc, item) => {
     acc[item[0].trim()] = item[1]
     return acc
   }, {}
   )
-)
+})
 
 /**
  * Main bot init
@@ -24,14 +24,16 @@ module.exports = P.coroutine(function*(robot) {
     console.log('No wit token')
     return
   }
-  // init gdrive "backend"
+
   yield GoogleSpreadsheet.initAsync(
-    path.join(__dirname, '../client-secret.json')
-  )
+    process.env.CLIENT_SECRET || path.join(__dirname, '../client-secret.json')
+  ).then(console.log)
+
   answers = yield refreshAnswers()
 
   robot.respond(/(.*)/, P.coroutine(function* (msg) {
     const query = msg.match[1]
+
     try {
       const intent = yield getIntent(query, robot).catch(err => { msg.reply(err); throw err })
       const res = answers[intent]
