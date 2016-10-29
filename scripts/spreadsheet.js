@@ -9,7 +9,7 @@ var SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
     process.env.USERPROFILE) + '/.credentials/'
 
-var TOKEN_PATH = TOKEN_DIR + 'sheets.googleapis.com-nodejs-quickstart.json'
+var TOKEN_PATH = process.TOKEN_PATH || TOKEN_DIR + 'sheets.googleapis.com-nodejs-quickstart.json'
 
 let oauth2Client = null
 
@@ -120,8 +120,10 @@ module.exports.getAnswers = function (cb) {
     range: 'FAQ!A1:E'
   }, function (err, response) {
     if (err) {
-      return cb(err)
+      cb(err)
     }
-    return cb(null, response.values)
+
+    console.log(response.values)
+
   })
 }
