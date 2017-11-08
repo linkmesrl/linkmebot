@@ -1,15 +1,16 @@
 {
-  "name": "babbot",
-  "version": "0.0.0",
+  "name": "randombot",
+  "version": "0.1.0",
   "private": true,
   "author": "giovanni.lela@link-me.it <giovanni>",
   "description": "A simple helpful robot for your Company",
   "dependencies": {
-    "eslint": "^3.8.1",
-    "eslint-config-standard": "^6.2.0",
+    "dotenv": "^4.0.0",
+    "eslint": "^4.10.0",
+    "eslint-config-standard": "^6.2.1",
     "google-auth-library": "^0.9.9",
     "google-spreadsheet": "^2.0.3",
-    "googleapis": "^14.1.0",
+    "googleapis": "^14.2.0",
     "hubot": "^2.19.0",
     "hubot-diagnostics": "0.0.1",
     "hubot-google-images": "^0.2.6",
@@ -25,7 +26,8 @@
     "hubot-slack": "^4.2.1"
   },
   "scripts": {
-    "start": "bash ./start.sh"
+    "start": "bin/hubot --adapter slack",
+    "dev": "bin/hubot --adapter shell"
   },
   "engines": {
     "node": "0.10.x"
