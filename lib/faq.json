@@ -1,9 +1,9 @@
 {
-"permesso": "Per prendere un permesso vai di qua", 
+"permesso": "Per prendere un permesso scrivi in amministrazione", 
 "straordinario": "Gli straordinari sono brutti", 
 "malattia": "Meglio se non ti ammali", 
-"ferie": "Per favore indica il periodo in cui vuoi prendere le ferie e sarai ricontattao", 
+"ferie": "Per favore indica il periodo in cui vuoi prendere le ferie, cosi lo segno sul calendario", 
 "remoto": "Scrivi in amministazione", 
-"orario di lavoro": "Si lavora quanto basta", 
-"rimborsi spese": "I rimborsi spese sono belli" 
+"orario di lavoro": "Si lavora quanto basta, se sei in ritardo avvisa", 
+"rimborsi spese": "Per chiedere un rimborso spese, " 
 }

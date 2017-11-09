@@ -5,3 +5,4 @@ _start.sh
 client-secret.json
 .env
 *.swp
+botdemo.json
